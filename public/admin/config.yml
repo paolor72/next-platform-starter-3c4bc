@@ -1,1 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main  # Assicurati che sia il branch corretto
+
+media_folder: "public/images"  # Dove saranno salvate le immagini
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "Pagine"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
 
