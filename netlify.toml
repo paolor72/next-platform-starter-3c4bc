@@ -1,3 +1,8 @@
 [build]
   publish = ".next"
   command = "npm run build"
+ [redirects]
+  from = "https://naturaessenziale.net/*"
+  to = "https://www.naturaessenziale.net/:splat"
+  status = 301
+  force = true
