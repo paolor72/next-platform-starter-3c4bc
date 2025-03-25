@@ -1,8 +1,37 @@
 [build]
-  publish = ".next"
-  command = "npm run build"
- [redirects]
+  command = "npm run build && npm run export"
+  publish = "out/"
+  functions = "functions/"
+
+[build.environment]
+  NODE_VERSION = "20"  # Specifica la versione di Node.js
+  NEXT_TELEMETRY_DISABLED = "1"  # Disabilita telemetria Next.js
+
+# Redirect da dominio nudo a www (HTTPS)
+[[redirects]]
   from = "https://naturaessenziale.net/*"
   to = "https://www.naturaessenziale.net/:splat"
   status = 301
   force = true
+  conditions = {Host = "naturaessenziale.net"}
+
+# Redirect per errori 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Cache headers per file statici
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Sicurezza headers per tutte le rotte
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
