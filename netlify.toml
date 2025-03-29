@@ -8,6 +8,8 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    skipBuildCache = true
 
 # Redirect da dominio nudo a www (HTTPS)
 [[redirects]]
