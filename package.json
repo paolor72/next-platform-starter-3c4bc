@@ -11,6 +11,7 @@
         "build-export": "next build && next export"
     },
     "dependencies": {
+        "@eslint/config-array": "^0.20.0",
         "@netlify/blobs": "^8.1.2",
         "blobshape": "^1.0.0",
         "bright": "^0.8.5",
